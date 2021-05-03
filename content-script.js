@@ -29,23 +29,39 @@ let crntAvatar =
 	document.querySelector('.avatar-user').src.split('?')[0] + '?s=60&v=4';
 
 fetch(`https://api.github.com/users/${crntUserName}`)
-	.then((response) => response.json())
+	.then((response) => (response.status === 403 ? undefined : response.json()))
 	.then((data) => {
-		document.querySelector('.ghsb-displayName').innerHTML = data.name;
-		document.querySelector('.ghsb-flwrs').innerHTML = data.followers;
-		document.querySelector('.ghsb-flwing').innerHTML = data.following;
+		if (data !== undefined) {
+			document.querySelector('.ghsb-displayName').innerHTML = data.name;
+			document.querySelector('.ghsb-flwrs').innerHTML = data.followers;
+			document.querySelector('.ghsb-flwing').innerHTML = data.following;
+		} else {
+			let rateLimitPrompt = document.createElement('div');
+			rateLimitPrompt.innerHTML = 'The rate limit has been exceeded.';
+			rateLimitPrompt.style = 'color: #ff7675; display: block';
+			rateLimitPrompt.classList.add('pb-3');
+
+			document
+				.querySelector('.ghsb-maindiv')
+				.parentNode.insertBefore(
+					rateLimitPrompt,
+					document.querySelector('.ghsb-maindiv').nextSibling
+				);
+		}
 	});
 
 fetch(`https://api.github.com/users/${crntUserName}/starred`)
-	.then((response) => response.json())
+	.then((response) => (response.status === 403 ? undefined : response.json()))
 	.then((data) => {
-		document.querySelector('.ghsb-starCount').innerHTML = data.length;
+		if (data !== undefined) {
+			document.querySelector('.ghsb-starCount').innerHTML = data.length;
+		}
 	});
 
 document.querySelector('.dashboard-sidebar').prepend(ghShortcutBtns);
 
 ghShortcutBtns.innerHTML = `
-	<div style="display: flex; gap: .5rem">
+	<div style="display: flex; gap: .5rem" class="ghsb-maindiv">
 
 		<a href="https://github.com/${crntUserName}" style="color: inherit">
 			<img src="${crntAvatar}" alt="@${crntUserName}" class="avatar-user" style="width: 60px; height: 60px" />
