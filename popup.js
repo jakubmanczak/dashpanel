@@ -1,1 +1,1 @@
-document.querySelector('#ver').innerHTML = 'up to date';
+// document.querySelector('#ver').innerHTML = 'up to date';
