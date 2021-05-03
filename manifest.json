@@ -14,6 +14,7 @@
 				"https://github.com/dashboard",
 				"https://github.com/orgs/*/dashboard"
 			],
+			"run_at": "document_end",
 			"js": ["content-script.js"]
 		}
 	]
