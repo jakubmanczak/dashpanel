@@ -5,7 +5,13 @@
 	"manifest_version": 3,
 	"permissions": ["activeTab"],
 	"action": {
-		"default_popup": "popup.html"
+		"default_popup": "popup.html",
+		"default_icon": {
+			"16": "/images/x16.png",
+			"32": "/images/x32.png",
+			"48": "/images/x48.png",
+			"128": "/images/x128.png"
+		}
 	},
 	"content_scripts": [
 		{
@@ -17,5 +23,11 @@
 			"run_at": "document_end",
 			"js": ["content-script.js"]
 		}
-	]
+	],
+	"icons": {
+		"16": "/images/x16.png",
+		"32": "/images/x32.png",
+		"48": "/images/x48.png",
+		"128": "/images/x128.png"
+	}
 }
