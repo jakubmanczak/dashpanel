@@ -3,7 +3,6 @@
 	"description": "An extension to make navigation to certain places in GitHub easier.",
 	"version": "1.0.0",
 	"manifest_version": 3,
-	"permissions": ["activeTab"],
 	"action": {
 		"default_popup": "popup.html",
 		"default_icon": {
