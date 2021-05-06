@@ -50,13 +50,19 @@ fetch(`https://api.github.com/users/${crntUserName}`)
 		}
 	});
 
-fetch(`https://api.github.com/users/${crntUserName}/starred`)
-	.then((response) => (response.status === 403 ? undefined : response.json()))
-	.then((data) => {
-		if (data !== undefined) {
-			document.querySelector('.ghsb-starCount').innerHTML = data.length;
-		}
-	});
+fetch(`https://api.github.com/users/${crntUserName}/starred?per_page=1`).then(
+	(response) => {
+		if (response.status !== 403)
+			document.querySelector(
+				'.ghsb-starCount'
+			).innerHTML = response.headers
+				.get('link')
+				.split(',')[1]
+				.split(';')[0]
+				.split('=')[2]
+				.slice(0, -1);
+	}
+);
 
 // Resizing the left sidebar to fit the new profile in case of big numbers fetched by API
 // cuz it looks bad if it breaks and is split in two lines
