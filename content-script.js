@@ -1,51 +1,51 @@
 // Giving the context switcher on the dashboard a title + deboldifying the context switcher title
 document
-	.querySelector(".dashboard-sidebar")
-	.childNodes[1].childNodes[1].childNodes[1].classList.remove("text-bold");
+	.querySelector('.dashboard-sidebar')
+	.childNodes[1].childNodes[1].childNodes[1].classList.remove('text-bold');
 
-let contextSwitcherSign = document.createElement("h2");
-contextSwitcherSign.classList.value = "hide-sm hide-md f5 mb-1";
+let contextSwitcherSign = document.createElement('h2');
+contextSwitcherSign.classList.value = 'hide-sm hide-md f5 mb-1';
 document
-	.querySelector(".dashboard-sidebar")
+	.querySelector('.dashboard-sidebar')
 	.childNodes[1].childNodes[1].childNodes[1].prepend(contextSwitcherSign);
-contextSwitcherSign.innerText = "Context Switch";
+contextSwitcherSign.innerText = 'Context Switch';
 
 // Removing the top margin from context switcher
 document
-	.querySelector(".dashboard-sidebar")
-	.childNodes[1].classList.remove("mt-3");
+	.querySelector('.dashboard-sidebar')
+	.childNodes[1].classList.remove('mt-3');
 
 // Adding the profile button + misc buttons to the top of the dashboard sidebar
-let ghShortcutBtns = document.createElement("div");
+let ghShortcutBtns = document.createElement('div');
 ghShortcutBtns.classList.add(
-	"border-bottom",
-	"color-border-secondary",
-	"pt-3",
-	"mt-3"
+	'border-bottom',
+	'color-border-secondary',
+	'pt-3',
+	'mt-3'
 );
 
-let crntUserName = document.querySelector(".avatar-user").alt.substring(1);
+let crntUserName = document.querySelector('.avatar-user').alt.substring(1);
 let crntAvatar =
-	document.querySelector(".avatar-user").src.split("?")[0] + "?s=60&v=4";
+	document.querySelector('.avatar-user').src.split('?')[0] + '?s=60&v=4';
 
 fetch(`https://api.github.com/users/${crntUserName}`)
 	.then((response) => (response.status === 403 ? undefined : response.json()))
 	.then((data) => {
 		if (data !== undefined) {
-			document.querySelector(".ghsb-displayName").innerHTML = data.name;
-			document.querySelector(".ghsb-flwrs").innerHTML = data.followers;
-			document.querySelector(".ghsb-flwing").innerHTML = data.following;
+			document.querySelector('.ghsb-displayName').innerHTML = data.name;
+			document.querySelector('.ghsb-flwrs').innerHTML = data.followers;
+			document.querySelector('.ghsb-flwing').innerHTML = data.following;
 		} else {
-			let rateLimitPrompt = document.createElement("div");
-			rateLimitPrompt.innerHTML = "The rate limit has been exceeded.";
-			rateLimitPrompt.style = "color: #ff7675; display: block";
-			rateLimitPrompt.classList.add("pb-3");
+			let rateLimitPrompt = document.createElement('div');
+			rateLimitPrompt.innerHTML = 'The rate limit has been exceeded.';
+			rateLimitPrompt.style = 'color: #ff7675; display: block';
+			rateLimitPrompt.classList.add('pb-3');
 
 			document
-				.querySelector(".ghsb-maindiv")
+				.querySelector('.ghsb-maindiv')
 				.parentNode.insertBefore(
 					rateLimitPrompt,
-					document.querySelector(".ghsb-maindiv").nextSibling
+					document.querySelector('.ghsb-maindiv').nextSibling
 				);
 		}
 	});
@@ -54,21 +54,21 @@ fetch(`https://api.github.com/users/datejer/starred?per_page=1`).then(
 	(response) => {
 		if (response.status !== 403)
 			document.querySelector(
-				".ghsb-starCount"
+				'.ghsb-starCount'
 			).innerHTML = response.headers
-				.get("link")
-				.split(",")[1]
-				.split(";")[0]
-				.split("=")[2]
+				.get('link')
+				.split(',')[1]
+				.split(';')[0]
+				.split('=')[2]
 				.slice(0, -1);
 	}
 );
 
 // Resizing the left sidebar to fit the new profile in case of big numbers fetched by API
 // cuz it looks bad if it breaks and is split in two lines
-document.querySelector(".team-left-column").style = `max-width: max-content;`;
+document.querySelector('.team-left-column').style = `max-width: max-content;`;
 
-document.querySelector(".dashboard-sidebar").prepend(ghShortcutBtns);
+document.querySelector('.dashboard-sidebar').prepend(ghShortcutBtns);
 
 ghShortcutBtns.innerHTML = `
 	<div style="display: flex; gap: .5rem" class="ghsb-maindiv">
