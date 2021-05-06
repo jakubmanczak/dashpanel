@@ -50,7 +50,7 @@ fetch(`https://api.github.com/users/${crntUserName}`)
 		}
 	});
 
-fetch(`https://api.github.com/users/datejer/starred?per_page=1`).then(
+fetch(`https://api.github.com/users/${crntUserName}/starred?per_page=1`).then(
 	(response) => {
 		if (response.status !== 403)
 			document.querySelector(
