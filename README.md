@@ -4,6 +4,9 @@
 
 Github Shortcut Buttons is a Chrome extension making it easier to access your profile, starred repos & more from your dashboard. A whole one click easier. Yeah, I have no explanation for that one.
 
+### Published on the Chrome Web Store
+[yes](https://chrome.google.com/webstore/detail/github-shortcut-buttons/pjpbnpfnlneikmbimeppahghpgeogfka)
+
 ### How?
 By injecting some HTML into the site, taking some values from it and fetching the others from the API.
 
