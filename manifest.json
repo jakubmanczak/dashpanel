@@ -1,18 +1,10 @@
 {
+	"manifest_version": 2,
+	"version": "1.0",
 	"name": "GitHub Shortcut Buttons",
 	"description": "An extension to make navigation to certain places in GitHub easier.",
-	"version": "1.0",
-	"manifest_version": 2,
+	"author": "Jakub Mańczak (manczak.net)",
 	"permissions": ["<all_urls>"],
-	"action": {
-		"default_popup": "popup.html",
-		"default_icon": {
-			"16": "/images/x16.png",
-			"32": "/images/x32.png",
-			"48": "/images/x48.png",
-			"128": "/images/x128.png"
-		}
-	},
 	"content_scripts": [
 		{
 			"matches": [
