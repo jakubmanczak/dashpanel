@@ -8,7 +8,7 @@ contextSwitcherSign.classList.value = 'hide-sm hide-md f5 mb-1';
 document
 	.querySelector('.dashboard-sidebar')
 	.childNodes[1].childNodes[1].childNodes[1].prepend(contextSwitcherSign);
-contextSwitcherSign.innerText = 'Context Switch';
+contextSwitcherSign.innerText = 'Dashboard Context';
 
 // Removing the top margin from context switcher
 document
@@ -55,9 +55,7 @@ fetch(`https://api.github.com/users/${crntUserName}`)
 fetch(`https://api.github.com/users/${crntUserName}/starred?per_page=1`).then(
 	(response) => {
 		if (response.status !== 403)
-			document.querySelector(
-				'.ghsb-starCount'
-			).innerHTML = response.headers
+			document.querySelector('.ghsb-starCount').innerHTML = response.headers
 				.get('link')
 				.split(',')[1]
 				.split(';')[0]
