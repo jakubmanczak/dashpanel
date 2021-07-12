@@ -32,14 +32,14 @@ fetch(`https://api.github.com/users/${crntUserName}`)
 	.then((response) => (response.status === 403 ? undefined : response.json()))
 	.then((data) => {
 		if (data !== undefined) {
-			document.querySelector('.ghsb-displayName').innerHTML = data.name;
-			document.querySelector('.ghsb-flwrs').innerHTML = data.followers;
-			document.querySelector('.ghsb-flwing').innerHTML = data.following;
+			document.querySelector('.ghsb-displayName').innerText = data.name;
+			document.querySelector('.ghsb-flwrs').innerText = data.followers;
+			document.querySelector('.ghsb-flwing').innerText = data.following;
 			document.querySelector('.ghsb-repoCount').innerText = data.public_repos;
 			document.querySelector('.ghsb-gistCount').innerText = data.public_gists;
 		} else {
 			let rateLimitPrompt = document.createElement('div');
-			rateLimitPrompt.innerHTML = 'The rate limit has been exceeded.';
+			rateLimitPrompt.innerText = 'The rate limit has been exceeded.';
 			rateLimitPrompt.style = 'color: #ff7675; display: block';
 			rateLimitPrompt.classList.add('pb-3');
 
@@ -55,7 +55,7 @@ fetch(`https://api.github.com/users/${crntUserName}`)
 fetch(`https://api.github.com/users/${crntUserName}/starred?per_page=1`).then(
 	(response) => {
 		if (response.status !== 403)
-			document.querySelector('.ghsb-starCount').innerHTML = response.headers
+			document.querySelector('.ghsb-starCount').innerText = response.headers
 				.get('link')
 				.split(',')[1]
 				.split(';')[0]
