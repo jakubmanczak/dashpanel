@@ -90,9 +90,10 @@ ghsbDisplayNameContainer.style = `display:flex;flex-direction:column`;
 document.querySelector(`.ghsb-maindiv`).appendChild(ghsbDisplayNameContainer);
 
 let ghsbDisplayNameLink = document.createElement(`a`);
-ghsbDisplayNameLink.classList.add(`ghsb-dname-link`);
+ghsbDisplayNameLink.classList.add(`ghsb-dname-link`, `Link--primary`);
 ghsbDisplayNameLink.style = `color:inherit`;
-document.querySelector(`.ghsb-dname-cont`).appendChild(ghsbDisplayNameLink); // !!!!!!!!!!!!!!!!!!!!!!
+ghsbDisplayNameLink.href = `https://github.com/${crntUserName}`;
+document.querySelector(`.ghsb-dname-cont`).appendChild(ghsbDisplayNameLink);
 let ghsbDisplayNameH = document.createElement(`h2`);
 ghsbDisplayNameH.classList.add(`ghsb-displayName`);
 ghsbDisplayNameH.innerText = `${crntUserName}`;
