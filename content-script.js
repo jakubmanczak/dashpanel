@@ -108,15 +108,6 @@ let ghsbLink1 = document.createElement(`a`);
 let ghsbLink2 = document.createElement(`a`);
 let ghsbLink3 = document.createElement(`a`);
 let ghsbLink4 = document.createElement(`a`);
-let ghsbLinkSeperator1 = document.createElement(`div`);
-let ghsbLinkSeperator2 = document.createElement(`div`);
-let ghsbLinkSeperator3 = document.createElement(`div`);
-ghsbLinkSeperator1.innerText = ` · `;
-ghsbLinkSeperator2.innerText = ` · `;
-ghsbLinkSeperator3.innerText = ` · `;
-ghsbLinkSeperator1.style = `display: inline`;
-ghsbLinkSeperator2.style = `display: inline`;
-ghsbLinkSeperator3.style = `display: inline`;
 ghsbLink1.classList.add(
 	`Link--secondary`,
 	`no-underline`,
@@ -146,11 +137,14 @@ ghsbLink2.href = `https://github.com/${crntUserName}?tab=repositories`;
 ghsbLink3.href = `https://gist.github.com/${crntUserName}`;
 ghsbLink4.href = `https://github.com/${crntUserName}?tab=following`;
 document.querySelector('.ghsbLinksContainer').appendChild(ghsbLink1);
-document.querySelector('.ghsbLinksContainer').appendChild(ghsbLinkSeperator1);
+let ghsbLinkSeperator1 = document.createTextNode(` · `);
+document.querySelector(`.ghsbLinksContainer`).appendChild(ghsbLinkSeperator1);
 document.querySelector('.ghsbLinksContainer').appendChild(ghsbLink2);
-document.querySelector('.ghsbLinksContainer').appendChild(ghsbLinkSeperator2);
+let ghsbLinkSeperator2 = document.createTextNode(` · `);
+document.querySelector(`.ghsbLinksContainer`).appendChild(ghsbLinkSeperator2);
 document.querySelector('.ghsbLinksContainer').appendChild(ghsbLink3);
-document.querySelector('.ghsbLinksContainer').appendChild(ghsbLinkSeperator3);
+let ghsbLinkSeperator3 = document.createTextNode(` · `);
+document.querySelector(`.ghsbLinksContainer`).appendChild(ghsbLinkSeperator3);
 document.querySelector('.ghsbLinksContainer').appendChild(ghsbLink4);
 
 let ghsbLinkSvg1 = document.createElementNS(
