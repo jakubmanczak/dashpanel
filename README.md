@@ -1,3 +1,7 @@
+# archived - link to [successor - "dashpanel"](https://github.com/jakubmanczak/dashpanel) 
+
+---
+
 <img align="left" style="float: left; margin: 0 10px 0 0" alt="ghsb" src="https://i.imgur.com/S8J6nl5.png" />
 
 # gh-shortcut-buttons
